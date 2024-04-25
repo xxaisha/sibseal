@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: small-pod-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: small-pod
+  template:
+    metadata:
+      labels:
+        app: small-pod
+    spec:
+      containers:
+      - name: small-pod-container
+        image: nginx:alpine  # Contoh menggunakan gambar Nginx Alpine
+        resources:
+          requests:
+            cpu: "50m"  # Permintaan CPU minimal
+            memory: "64Mi"  # Permintaan memori minimal
+          limits:
+            cpu: "100m"  # Batas CPU maksimal
+            memory: "128Mi"  # Batas memori maksimal
+
